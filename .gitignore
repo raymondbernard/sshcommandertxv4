@@ -1,0 +1,15 @@
+venv/
+__pycache__/
+.DS_Store
+config/preferences.json
+.vscode/
+dataset/
+certs/
+dataset*/
+images_dataset
+kaizen_theme/
+model/
+Temp/
+chinese_dataset/
+config/
+media/
