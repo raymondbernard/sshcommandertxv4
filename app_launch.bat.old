@@ -21,9 +21,8 @@
 
 @echo off
 setlocal enabledelayedexpansion
-set NGC_CLI_API_URL=https://api.ngc.nvidia.com
-set "env_path_found="
 
+set "env_path_found="
 for /f "tokens=1,* delims= " %%a in ('"%programdata%\MiniConda\Scripts\conda.exe" env list') do (
     set "env_name=%%a"
     set "env_path=%%b"
@@ -38,15 +37,22 @@ for /f "tokens=1,* delims= " %%a in ('"%programdata%\MiniConda\Scripts\conda.exe
 )
 
 :endfor
-set "parentDir=%~dp0..\.."
-if "%env_path_found%"=="" (
-    FOR %%I IN ("%parentDir%") DO SET "absParentDir=%%~fI"
-    set "env_path_found=!absParentDir!\env_nvd_rag"
-)
 if not "%env_path_found%"=="" (
     echo Environment path found: %env_path_found%
     call "%programdata%\MiniConda\Scripts\activate.bat" %env_path_found%
-    python app_launch.py
+    @REM Call "C:\Users\RayBe\AppData\Local\NVIDIA\ChatWithRTX\env_nvd_rag\Lib\venv\scripts\nt\python.exe pip install -r %localappdata%\NVIDIA\CatWithRTX\RAG\trt-llm-rag-windows-main\requirements.txt
+    python verify_install.py
+    python verify_install.py
+    call %localappdata%\NVIDIA\MiniConda\Scripts\conda.exe env list
+    call %localappdata%\NVIDIA\MiniConda\Scripts\activate.bat %localappdata%\NVIDIA\ChatWithRTX\env_nvd_rag
+    cd %localappdata%\NVIDIA\ChatWithRTX\RAG\trt-llm-rag-windows-main 
+    pip install -r requirements.txt   
+    python verify_install.py
+
+    @REM start streamlit python ssh_commander.py
+
+    start python app_sshtensortt.py
+    pause
 ) else (
     echo Environment with 'env_nvd_rag' not found.
     pause

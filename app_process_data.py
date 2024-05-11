@@ -33,8 +33,8 @@ logging.basicConfig(level=logging.INFO,
 
 # Define file paths
 local_app_data = os.getenv('LOCALAPPDATA')
-CHAT_LOGS = os.path.join(local_app_data, "NVIDIA", "ChatWithRTX", "RAG", "trt-llm-rag-windows-main", "chat_logs.jsonl")
-DATABASE_PATH = os.path.join(local_app_data, "NVIDIA", "ChatWithRTX", "RAG", "trt-llm-rag-windows-main", "sshcommander.db")
+CHAT_LOGS = os.path.join(local_app_data, "NVIDIA", "ChatRTX", "RAG", "trt-llm-rag-windows-ChatRTX_0.3", "chat_logs.jsonl")
+DATABASE_PATH = os.path.join(local_app_data, "NVIDIA", "ChatRTX", "RAG", "trt-llm-rag-windows-ChatRTX_0.3", "sshcommander.db")
 
 def parse_chat_logs(chat_logs_path):
     results = []

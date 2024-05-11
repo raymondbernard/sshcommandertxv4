@@ -13,3 +13,4 @@ Temp/
 chinese_dataset/
 config/
 media/
+.streamlit/
