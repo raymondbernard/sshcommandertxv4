@@ -253,6 +253,10 @@ def call_llm_streamed(query):
         yield partial_response
 
 def chatbot(query, chat_history, session_id):
+    print("256 query  = ", chat_history)
+    print("257 chat history = ", chat_history)
+    print("258 chat history = ", session_id)
+
     if selected_CLIP:
         ts = calendar.timegm(time.gmtime())
         temp_image_folder_name = "Temp/Temp_Images"

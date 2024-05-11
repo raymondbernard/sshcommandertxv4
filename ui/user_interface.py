@@ -338,7 +338,7 @@ class MainInterface:
 
     def render(self):
         with gr.Blocks(
-            title="SSH Commander RTX v4",
+            title="SSH Commander RTX v0.3.0",
             analytics_enabled=False,
             theme=kaizen.theme(),
             css=self.get_css(),
@@ -464,7 +464,7 @@ class MainInterface:
                 launch_url = f'https://127.0.0.1:{port}?cookie={cookie}&__theme=dark'
             else:
                 launch_url = f'http://127.0.0.1:{port}?cookie={cookie}&__theme=dark'
-            print(f'Open {launch_url} in browser to start ChatRTX')
+            print(f'Open {launch_url} in browser to start SSH Commander RTX v0.3.0')
             webbrowser.open(launch_url)
             return None
         
@@ -689,7 +689,7 @@ class MainInterface:
                 min_width=40
             )
             gr.HTML("""
-                <h1 style="font-size:32px; line-height:40px; margin:0; padding:0">ChatRTX</h1>
+                <h1 style="font-size:32px; line-height:40px; margin:0; padding:0">SSH Commander RTXv.0.3.0</h1>
             """)
             settings_button = gr.Button(
                 "",
@@ -721,11 +721,11 @@ class MainInterface:
                 gr.HTML("")
             with gr.Row():
                 shutdown_memory_released_markdown = gr.Markdown(
-                    "Video memory released. Reopen ChatRTX from desktop to continue chatting.",
+                    "Video memory released. Reopen SSH Commander from desktop to continue chatting.",
                     elem_classes="text-align-center"
                 )
                 shutdown_invalid_session_markdown = gr.Markdown(
-                    "Invalid session. Reopen ChatRTX from desktop to continue chatting.",
+                    "Invalid session. Reopen SSH Commander from desktop to continue chatting.",
                     elem_classes="text-align-center"
                 )
 
@@ -809,7 +809,7 @@ class MainInterface:
         with gr.Column(elem_classes="question-group") as sample_question_component_group:
             empty_space_component = gr.HTML("", elem_classes="empty-div")
             default_dataset_label = gr.Markdown(
-                "Default dataset is detaset for the Elbencho intructions-- this is where we can findtune the commands issued",
+                "Default dataset is detaset for the Elbencho intructions-- this is where we can find tune the SSH Commander inference",
                 elem_classes="description-secondary-markdown chat-disclaimer-message margin-"
             )
             with gr.Column(visible=False) as english_sample_questions:
@@ -875,7 +875,7 @@ class MainInterface:
             with gr.Row():
                 with gr.Group(elem_id="chat_box_group"):
                     with gr.Row():
-                        query_input = gr.Textbox(placeholder="SSH Commander: Type or use voice", container=False, elem_id="chat_text_area")
+                        query_input = gr.Textbox(placeholder="SSH Commander v0.3.0: Type or use voice", container=False, elem_id="chat_text_area")
                         chat_mic_component = gr.Audio(label="Microphone", sources=["upload", "microphone"], type="filepath", elem_id='microphone', render=isChatWithMicEnabled, visible=False)
                         gr.Button(
                             "",

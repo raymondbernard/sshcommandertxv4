@@ -22,60 +22,6 @@ app_config_file = 'config\\app_config.json'
 model_config_file = 'config\\config.json'
 preference_config_file = 'config\\preferences.json'
 data_source = 'directory'
-# Added By Ray Bernard
-# call the app_process_data after chat_logs have been created
-def process_sshcmd():
-    Process_Data()
-    print("Processed Data into SSH Commander DB")
-
-# Where we create the chatl_log
-def log_response(query, response, session_id):
-    print(response)
-
-    log_entry = {
-        "session_id": session_id,
-        "query": query,
-        "response": response,
-        "timestamp": time.time()
-    }
-    with open("chat_logs.jsonl", "a") as log_file:
-        json.dump(log_entry, log_file)
-        log_file.write("\n")  # For readability in the log file
-    process_sshcmd()
-
-def log_completion_response(completion_response):
-    print(f"Received input: {completion_response}, Type: {type(completion_response)}")  # Debug print
-    try:
-        # Assuming CompletionResponse has a .text attribute
-        if not hasattr(completion_response, 'text'):
-            raise ValueError("completion_response must have a 'text' attribute.")
-        
-        user_prompt_text = getattr(completion_response, 'text', None)
-        if user_prompt_text is None:
-            raise ValueError("The 'text' attribute could not be found.")
-        
-        log_entry = {
-            "user_prompt": user_prompt_text,
-            "timestamp": time.time()
-        }
-        with open("test_user_prompt.jsonl", "a") as log_file:
-            json.dump(log_entry, log_file)
-            log_file.write("\n")
-    except Exception as e:
-        print(f"Failed to log completion response: {e}")
-
-
-def read_config(file_name):
-    try:
-        with open(file_name, 'r') as file:
-            return json.load(file)
-    except FileNotFoundError:
-        print(f"The file {file_name} was not found.")
-    except json.JSONDecodeError:
-        print(f"There was an error decoding the JSON from the file {file_name}.")
-    except Exception as e:
-        print(f"An unexpected error occurred: {e}")
-    return None
 
 def get_model_config(config, model_name=None):
     models = config["models"]["supported"]
@@ -171,7 +117,6 @@ generate_inferance_engine(data_dir)
 
 
 def stream_chatbot(query, chat_history, session_id):
-    print("439 chat history = ", chat_history)
     if data_source == "nodataset":
         for response in call_llm_streamed(query):
             yield response
