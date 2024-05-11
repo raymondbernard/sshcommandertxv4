@@ -424,7 +424,7 @@ class MainInterface:
         self._open_app(port)
         if (self._https_enabled):
             interface.launch(
-                favicon_path=os.path.join(os.path.dirname(__file__), 'assets/nvidia_logo.png'),
+                favicon_path=os.path.join(os.path.dirname(__file__), 'assets/sshcommander.png'),
                 show_api=False,
                 server_port=port,
                 allowed_paths=['Temp/Temp_Images/.', 'Temp/.'],
@@ -433,7 +433,7 @@ class MainInterface:
             )
         else:
             interface.launch(
-                favicon_path=os.path.join(os.path.dirname(__file__), 'assets/nvidia_logo.png'),
+                favicon_path=os.path.join(os.path.dirname(__file__), 'assets/sshcommander.png'),
                 show_api=False,
                 server_port=port,
                 allowed_paths=['Temp/Temp_Images/.', 'Temp/.']
@@ -679,7 +679,7 @@ class MainInterface:
 
     def _render_logo_shut_down(self):
         with gr.Row():
-            gr.Image(os.path.join(os.path.dirname(__file__), "assets/nvidia_logo.png"),
+            gr.Image(os.path.join(os.path.dirname(__file__), "assets/sshcommander.png"),
                 interactive=False,
                 show_label=False,
                 show_download_button=False,
@@ -809,7 +809,7 @@ class MainInterface:
         with gr.Column(elem_classes="question-group") as sample_question_component_group:
             empty_space_component = gr.HTML("", elem_classes="empty-div")
             default_dataset_label = gr.Markdown(
-                "Default dataset is a sampling of articles recently published on GeForce News",
+                "Default dataset is detaset for the Elbencho intructions-- this is where we can findtune the commands issued",
                 elem_classes="description-secondary-markdown chat-disclaimer-message margin-"
             )
             with gr.Column(visible=False) as english_sample_questions:
@@ -875,7 +875,7 @@ class MainInterface:
             with gr.Row():
                 with gr.Group(elem_id="chat_box_group"):
                     with gr.Row():
-                        query_input = gr.Textbox(placeholder="ChatRTX: Type or use voice", container=False, elem_id="chat_text_area")
+                        query_input = gr.Textbox(placeholder="SSH Commander: Type or use voice", container=False, elem_id="chat_text_area")
                         chat_mic_component = gr.Audio(label="Microphone", sources=["upload", "microphone"], type="filepath", elem_id='microphone', render=isChatWithMicEnabled, visible=False)
                         gr.Button(
                             "",
@@ -937,7 +937,7 @@ class MainInterface:
             )
             gr.HTML("")
         chat_disclaimer_markdown = gr.Markdown(
-            "ChatRTX response quality depends on the AI model's accuracy and the input dataset. Please verify important information.",
+            "SSHCommander with AI  response quality depends on the AI model's accuracy and the input dataset. Please verify important information.",
             elem_classes="description-secondary-markdown chat-disclaimer-message margin-"
         )
         return (chatbot_window, query_input, chat_mic_component, mic_start_button, mic_stop_button, submit_button, retry_button, undo_button, reset_button, query_group, chat_disclaimer_markdown, chat_action_buttons_row)
